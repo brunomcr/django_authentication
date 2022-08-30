@@ -1,51 +1,53 @@
 {% extends "main/base.html" %}
 {% load static %}
-{% block title %} Sing Up {% endblock %}
+{% block title %} Sign Up {% endblock %}
 {% block content %}
 
 <!-- Sign Up - Members -->
 
 {% if user.is_authenticated %}
 <!-- Authenticated -->
-<div class="mx-auto">
-    <h1 class="display-5 fw-bold lh-1 m-auto">Welcome, {{ user.username|title }}</h1>
-    <p class="fs-5">User authenticated</p>
-</div>
+
+<h1 class="display-5 fw-bold lh-1 m-auto">Welcome, {{ user.username|title }}</h1>
+<p class="lead">User authenticated</p>
+
 {% else %}
-<div class="mx-auto">
-    <!-- Text -->
-    <h1 class="display-5 fw-bold lh-1 mb-3">Sing Up</h1>
-    <p class="fs-5">
-        User registration example, using Django Authentication on the backend and
-        Bootstrap as the frontend tool.
-    </p>
 
-    <!-- Status Sign Up -->
-    {% if status == '1' %}
-    <div class="alert alert-warning" role="alert">
-        Username or Email already exist, choose another one!
-    </div>
-    {% elif status == '2' %}
-    <div class="alert alert-danger" role="alert">
-        Username cannot be empty field!
-    </div>
-    {% elif status == '3' %}
-    <div class="alert alert-danger" role="alert">
-        Email cannot be empty field!
-    </div>
-    {% elif status == '4' %}
-    <div class="alert alert-danger" role="alert">
-        Password cannot be empty field!
-    </div>
-    {% elif status == '0' %}
-    <div class="alert alert-success" role="alert">
-        Success, you are sign up!
-    </div>
-    {% endif %}
+<!-- Text -->
+<h1 class="display-5 fw-bold lh-1 mb-3">Sign Up</h1>
+<p class="lead">
+    User registration example, using Django Authentication on the backend and
+    Bootstrap as the frontend tool.
+</p>
 
-    <!-- Form - Sing Up-->
-    <form method="POST" class="p-4 border rounded-3 bg-light">
+
+<div class="d-flex justify-content-center align-items-center">
+    <!-- Form - Sign Up-->
+    <form method="POST" class="p-4 border rounded-3 bg-light" style="width:380px">
         {% csrf_token %}
+
+        <!-- Status Sign Up -->
+        {% if status == '1' %}
+        <div class="alert alert-warning" role="alert">
+            Username or Email already exist, choose another one!
+        </div>
+        {% elif status == '2' %}
+        <div class="alert alert-danger" role="alert">
+            Username cannot be empty field!
+        </div>
+        {% elif status == '3' %}
+        <div class="alert alert-danger" role="alert">
+            Email cannot be empty field!
+        </div>
+        {% elif status == '4' %}
+        <div class="alert alert-danger" role="alert">
+            Password cannot be empty field!
+        </div>
+        {% elif status == '0' %}
+        <div class="alert alert-success" role="alert">
+            Success, you are sign up!
+        </div>
+        {% endif %}
 
         <div class="form-floating mb-3">
             <input type="text" name="username" class="form-control" id="username" placeholder="Username">
@@ -60,15 +62,17 @@
             <label for="password">Password</label>
         </div>
         <div class="mb-3">
-            <small class="text-muted">By clicking Sign up, you agree to the <a class="text-decoration-none" role="button">terms of
+            <small class="text-muted">By clicking Sign up, you agree to the <a class="text-decoration-none"
+                                                                               role="button">terms
+                of
                 use.</a></small>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
         <hr class="my-4">
         <small class="text-muted">All data security by bmcr</small>
     </form>
-
 </div>
+
 {% endif %}
 
 {% endblock %}

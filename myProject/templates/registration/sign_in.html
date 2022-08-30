@@ -7,37 +7,39 @@
 
 {% if user.is_authenticated %}
 <!-- Authenticated -->
-<div class=" mx-auto">
-    <h1 class="display-5 fw-bold lh-1 m-auto">Welcome, {{ user.username|title }}</h1>
-    <p class="fs-5">User authenticated</p>
-</div>
+
+<h1 class="display-5 fw-bold lh-1 m-auto">Welcome, {{ user.username|title }}</h1>
+<p class="lead">User authenticated</p>
+
 {% else %}
-<div class="mx-auto">
-    <!-- Text -->
-    <h1 class="display-5 fw-bold lh-1 mb-3">Sing In</h1>
-    <p class="fs-5">
-        User login example, using Django Authentication on the
-        backend and Bootstrap as the frontend tool.
-    </p>
 
-    <!-- Status Sign In -->
-    {% if status == '1' %}
-    <div class="alert alert-warning" role="alert">
-        Username or Password is not right, Try again!
-    </div>
-    {% elif status == '2' %}
-    <div class="alert alert-warning" role="alert">
-        You need Sign In, to view this page!
-    </div>
-    {% elif status == '0' %}
-    <div class="alert alert-success" role="alert">
-        Success, you are Sign In!
-    </div>
-    {% endif %}
+<!-- Text -->
+<h1 class="display-5 fw-bold lh-1 mb-3">Sing In</h1>
+<p class="lead">
+    User login example, using Django Authentication on the
+    backend and Bootstrap as the frontend tool.
+</p>
 
+
+<div class="d-flex justify-content-center align-items-center">
     <!-- Form - Sing In -->
-    <form method="POST" class="p-4 border rounded-3 bg-light">
+    <form method="POST" class="p-4 border rounded-3 bg-light" style="width:380px">
         {% csrf_token %}
+
+        <!-- Status Sign In -->
+        {% if status == '1' %}
+        <div class="alert alert-warning" role="alert">
+            Username or Password is not right, Try again!
+        </div>
+        {% elif status == '2' %}
+        <div class="alert alert-warning" role="alert">
+            You need Sign In, to view this page!
+        </div>
+        {% elif status == '0' %}
+        <div class="alert alert-success" role="alert">
+            Success, you are Sign In!
+        </div>
+        {% endif %}
 
         <div class="form-floating mb-3">
             <input type="text" name="username" class="form-control" id="username" placeholder="Username">
@@ -55,16 +57,18 @@
         </div>
         <div class="mb-3">
             <small class="text-muted">
-                <a class="text-decoration-none" href="{% url 'members:password_reset' %}" role="button">Forgot Password</a>
+                <a class="text-decoration-none" href="{% url 'members:password_reset' %}" role="button">Forgot
+                    Password</a>
             </small>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
         <hr class="my-4">
-        <small class="text-muted">Not a member ? <a class="text-decoration-none" href="{% url 'members:sign_up' %}" role="button">Sing
+        <small class="text-muted">Not a member ? <a class="text-decoration-none" href="{% url 'members:sign_up' %}"
+                                                    role="button">Sing
             Up</a></small>
     </form>
-
 </div>
+
 {% endif %}
 
 {% endblock %}
