@@ -53,12 +53,6 @@ $ poetry run python manage.py runserver
 
 <br>
 
-
+✅ With the server running, you just need to visit the project endpoints with your browser!
 
 https://user-images.githubusercontent.com/61769161/187548572-b1496c9e-9865-4c95-819b-ea7046f54c14.mp4
-
-
-
-<br>
-
-✅ With the server running, you just need to visit the project endpoints with your browser!
