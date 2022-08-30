@@ -5,9 +5,9 @@ Authentication with Django
 
 ### ⚙️ Main technologies:
 
-<li>Python</li>
-<li>Django</li>    
-<li>SQLite</li>
+<li>Python 3.10</li>
+<li>Django 4.1</li>    
+<li>SQLite </li>
 
 <br>
 
