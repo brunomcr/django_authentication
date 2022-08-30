@@ -1,0 +1,76 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %} Sing In {% endblock %}
+{% block content %}
+
+<!-- Login - Members -->
+<div class="container my-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-auto rounded-3 shadow p-4">
+        {% if user.is_authenticated %}
+        <!-- Authenticated -->
+
+        <h1 class="display-4 fw-bold lh-1 mb-3">User is authenticated</h1>
+        <p class="fs-4">Welcome, {{ user.username }}.</p>
+
+
+        {% else %}
+        <!-- Text -->
+        <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 mb-3">Sing In</h1>
+            <p class="col-lg-10 fs-4">User login example, using Django Authentication on the backend and Bootstrap as
+                the frontend tool.</p>
+        </div>
+
+        <!-- Form -->
+        <div class="col-md-10 mx-auto col-lg-5">
+            <!-- Status Sign In -->
+            {% if status == '1' %}
+            <div class="alert alert-warning" role="alert">
+                Username or Password is not right, Try again!
+            </div>
+            {% elif status == '2' %}
+            <div class="alert alert-warning" role="alert">
+                You need Sign In, to view this page!
+            </div>
+            {% elif status == '0' %}
+            <div class="alert alert-success" role="alert">
+                Success, you are Sign In!
+            </div>
+            {% endif %}
+
+            <!-- Form - Sing Up-->
+            <form method="POST" class="p-4 p-md-5 border rounded-3 bg-light">
+                {% csrf_token %}
+
+                <div class="form-floating mb-3">
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+                    <label for="username">Username</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                    <label for="password">Password</label>
+                </div>
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <div class="mb-3">
+                    <small class="text-muted">
+                        <a href="{% url 'members:password_reset' %}" role="button">Forgot Password</a>
+                    </small>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                <hr class="my-4">
+                <small class="text-muted">Not a member ? <a href="{% url 'members:sign_up' %}" role="button">Sing
+                    Up</a></small>
+            </form>
+
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}
