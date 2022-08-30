@@ -1,5 +1,5 @@
 # 📘 Django Authentication
-Authentication with Django
+A example of using authentication with Django.
 
 <br>
 
