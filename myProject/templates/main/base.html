@@ -19,62 +19,68 @@
 </head>
 
 <body>
+<div>
 
+</div>
 <!-- Collapsed Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
     <div class="container">
+        <!-- Menu - Brand -->
         <a class="navbar-brand" href="{% url 'main:index' %}">bmcr</a>
+
+        <!-- Menu Collapse - Button -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
                 aria-controls="navbarMain" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        <!-- Menu Collapse - Content -->
         <div class="collapse navbar-collapse justify-content-center" id="navbarMain">
             <ul class="navbar-nav mb-2">
-                <!-- Menu - Admin -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/" role="button">
-                        Admin
-                    </a>
-                </li>
                 <!-- Menu - Authenticated View -->
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'main:authenticated_view' %}" role="button">
                         Authenticated View
                     </a>
                 </li>
-                <!-- Menu - Authentication -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Django Authentication
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark">
-                        <li>
-                            <a class="dropdown-item" href="{% url 'members:sign_in' %}">Sign In</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="{% url 'members:sign_up' %}">Sign Up</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="{% url 'members:sign_out' %}">Sign Out</a>
-                        </li>
-                    </ul>
-                </li>
             </ul>
         </div>
+
+        <!-- Menu - Auth -->
+        <div class="navbar-nav justify-content-end mb-2">
+            {% if user.is_authenticated %}
+            <li class="navbar-text">
+                {{ user.username }}
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'members:sign_out' %}">Sign Out</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'members:sign_in' %}">Sign In</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'members:sign_up' %}">Sign Up</a>
+            </li>
+            {% endif %}
+        </div>
+
     </div>
 </nav>
 
 <!-- Block Content -->
-<div class="min-vh-100">
-    {% block content %}
-    <!-- Content Goes here -->
-    {% endblock content %}
+<div class="container min-vh-100 d-flex justify-content-center align-items-center">
+    <div class="row">
+        <div>
+        {% block content %}
+        <!-- Content Goes here -->
+        {% endblock content %}
+        </div>
+    </div>
 </div>
 
 <!-- Footer -->
-<footer class="d-flex flex-wrap p-3 justify-content-center text-center shadow">
+<footer class="d-flex flex-wrap p-3 justify-content-center shadow text-center">
     <small class="col-4 text-muted">© 2022 bmcr, All Rights Reserved</small>
 </footer>
 
