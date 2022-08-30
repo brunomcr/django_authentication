@@ -1,2 +1,2 @@
-# django_authentication-
+# django_authentication
 Authentication with Django
