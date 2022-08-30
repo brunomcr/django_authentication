@@ -3,7 +3,7 @@ Authentication with Django
 
 <br>
 
-### ⚙️ Main technologies:
+### 📑 Main technologies:
 
 <li>Python 3.10</li>
 <li>Django 4.1</li>    
@@ -15,6 +15,16 @@ Authentication with Django
 
 <li>Poetry</li>
 <li>Black</li>
+
+<br>
+
+### ⚙️Settings.py
+```
+# Email
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+```
+* Sending emails from the console backend. This backend is not intended for use in production
 
 <br>
 
@@ -36,12 +46,11 @@ $ poetry install
 $ poetry run python manage.py migrate
 ```
 
-- Create a super user:
-``` 
-$ poetry run python manage.py createsuperuser
-```
-
 - Start the development server:
 ```
 $ poetry run python manage.py runserver
 ```
+
+<br>
+
+✅ With the server running, you just need to visit the project endpoints with your browser!
