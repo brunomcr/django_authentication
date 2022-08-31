@@ -5,16 +5,10 @@ A example of using authentication with Django.
 
 ### 📑 Main technologies:
 
+<li>Poetry 1.1.14</li>
 <li>Python 3.10</li>
-<li>Django 4.1</li>    
+<li>Django 4.1</li>
 <li>SQLite </li>
-
-<br>
-
-### 🛠️ Main tools:
-
-<li>Poetry</li>
-<li>Black</li>
 
 <br>
 
